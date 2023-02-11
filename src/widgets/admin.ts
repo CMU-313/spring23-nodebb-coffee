@@ -1,3 +1,5 @@
+// Referenced @joonbang's TypeScript translation from P1: https://github.com/CMU-313/NodeBB/pull/151
+
 import webserver from '../webserver';
 import plugins from '../plugins';
 import groups from '../groups';
