@@ -1,6 +1,6 @@
 {
 	"id": "nodebb-plugin-composer-anon",
-	"url": "https://github.com/NodeBB/nodebb-plugin-composer-default",
+	"url": "https://github.com/CMU-313/spring23-nodebb-coffee",
 	"library": "library.js",
 	"hooks": [
 		{ "hook": "static:app.load", "method": "init" },
