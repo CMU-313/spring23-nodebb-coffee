@@ -342,11 +342,14 @@ define('composer', [
 
         submitBtn.on('click', function (e) {
             e.preventDefault();
-            e.stopPropagation();// Other click events bring composer back to active state which is undesired on submit
-
+            e.stopPropagation();
+            if ($('#post_as_anon').is(':checked')) {
+                console.log('The checkbox is checked');
+            }
             $(this).attr('disabled', true);
             post(post_uuid);
         });
+
 
         require(['mousetrap'], function (mousetrap) {
             mousetrap(postContainer.get(0)).bind('mod+enter', function () {
