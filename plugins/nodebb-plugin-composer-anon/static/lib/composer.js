@@ -206,6 +206,8 @@ define('composer', [
             tags: data.tags || [],
             modified: !!((data.title && data.title.length) || (data.body && data.body.length)),
             isMain: true,
+            anon: false,
+            anonUser: data.user.displayname,
         };
 
         ({ pushData } = await hooks.fire('filter:composer.topic.push', {
@@ -269,6 +271,8 @@ define('composer', [
                 body: translated,
                 modified: !!((title && title.length) || (translated && translated.length)),
                 isMain: false,
+                anon: false,
+                anonUser: 're',
             });
         });
     };
@@ -343,10 +347,11 @@ define('composer', [
         submitBtn.on('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
-            if ($('#post_as_anon').is(':checked')) {
-                console.log('The checkbox is checked');
-            }
             $(this).attr('disabled', true);
+            if ($('#post_as_anon').is(':checked')) {
+                composer.posts[post_uuid].anon = true;
+                composer.posts[post_uuid].anonUser = 'Anonymous';
+            }
             post(post_uuid);
         });
 
@@ -440,6 +445,7 @@ define('composer', [
         // https://github.com/NodeBB/NodeBB/issues/1951
         // remove when 1951 is resolved
 
+
         var title = postData.title.replace(/%/g, '&#37;').replace(/,/g, '&#44;');
         postData.category = await getSelectedCategory(postData);
         const privileges = postData.category ? postData.category.privileges : ajaxify.data.privileges;
@@ -473,6 +479,8 @@ define('composer', [
                 //     text: 'Text Label',
                 // }
             ],
+            anon: postData.anon,
+            anonUser: postData.anonUser,
         };
 
         if (data.mobile) {
@@ -646,6 +654,9 @@ define('composer', [
         var checkTitle = (postData.hasOwnProperty('cid') || parseInt(postData.pid, 10)) && postContainer.find('input.title').length;
         var isCategorySelected = !checkTitle || (checkTitle && parseInt(postData.cid, 10));
 
+        var isAnon = $('#post_as_anon').is(':checked');
+
+
         // Specifically for checking title/body length via plugins
         var payload = {
             post_uuid: post_uuid,
@@ -682,6 +693,10 @@ define('composer', [
             return composerAlert(post_uuid, '[[error:scheduling-to-past]]');
         }
 
+        if ($('#post_as_anon').is(':checked')) {
+            console.log('The checkbox is checked');
+        }
+
         let composerData = {
             uuid: post_uuid,
         };
@@ -699,6 +714,8 @@ define('composer', [
                 cid: categoryList.getSelectedCid(),
                 tags: tags.getTags(post_uuid),
                 timestamp: scheduler.getTimestamp(),
+                anon: isAnon,
+                anonUser: postData.anonUser,
             };
         } else if (action === 'posts.reply') {
             route = `/topics/${postData.tid}`;
