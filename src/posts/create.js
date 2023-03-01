@@ -28,6 +28,12 @@ module.exports = function (Posts) {
             throw new Error('[[error:invalid-pid]]');
         }
 
+        var anonname = 'not anon';
+
+        if (data.isanon) {
+            anonname = 'anonymous';
+        }
+
         const pid = await db.incrObjectField('global', 'nextPid');
         let postData = {
             pid: pid,
@@ -35,6 +41,7 @@ module.exports = function (Posts) {
             tid: tid,
             content: content,
             timestamp: timestamp,
+            anon: anonname,
         };
 
         if (data.toPid) {
