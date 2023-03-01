@@ -682,11 +682,19 @@ define('composer', [
             return composerAlert(post_uuid, '[[error:scheduling-to-past]]');
         }
 
+        var anonbool = false;
+
+        if ($('#post_as_anon').is(':checked')) {
+            console.log('The checkbox is checked');
+            anonbool = true;
+        }
+
         let composerData = {
             uuid: post_uuid,
         };
         let method = 'post';
         let route = '';
+        console.log(action);
 
         if (action === 'topics.post') {
             route = '/topics';
@@ -699,6 +707,7 @@ define('composer', [
                 cid: categoryList.getSelectedCid(),
                 tags: tags.getTags(post_uuid),
                 timestamp: scheduler.getTimestamp(),
+                isanon: anonbool,
             };
         } else if (action === 'posts.reply') {
             route = `/topics/${postData.tid}`;
