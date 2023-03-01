@@ -28,10 +28,10 @@ module.exports = function (Posts) {
             throw new Error('[[error:invalid-pid]]');
         }
 
-        var anonname = 'not anon';
+        var anonname = await user.getUserField(uid, 'username');
 
         if (data.isanon) {
-            anonname = 'anonymous';
+            anonname = 'Anonymous';
         }
 
         const pid = await db.incrObjectField('global', 'nextPid');
