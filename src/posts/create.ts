@@ -23,6 +23,8 @@ export type PostObject = {
     handle?: number;
     cid?: number;
     uploads?: any;
+    isanon?: boolean;
+    anon?: string;
   };
 
 type TopicObject = {
@@ -50,6 +52,13 @@ module.exports = function (Posts:PostObject) {
         if (data.toPid && !utils.isNumber(data.toPid)) {
             throw new Error('[[error:invalid-pid]]');
         }
+
+        let anonname: string = await user.getUserField(uid, 'username');
+        if (data.isanon) {
+            anonname = "Anonymous";
+        }
+
+
         // The next line calls a function in a module that has not been updated to TS yet
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
         const pid:number = await db.incrObjectField('global', 'nextPid') as number;
@@ -59,6 +68,8 @@ module.exports = function (Posts:PostObject) {
             tid: tid,
             content: content,
             timestamp: timestamp,
+            isanon: data.isanon,
+            anon: anonname,
         };
 
         if (data.toPid) {

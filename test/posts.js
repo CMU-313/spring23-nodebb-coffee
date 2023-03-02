@@ -1227,6 +1227,12 @@ describe('Post\'s', () => {
                 assert.strictEqual(events.length, 0);
             });
         });
+    
+        describe('anonymization tests', () => {
+            it('for sake of testing', async () => {
+                assert.strictEqual(false, true);
+            });
+        });
     });
 });
 
