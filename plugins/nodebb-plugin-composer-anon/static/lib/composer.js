@@ -716,6 +716,7 @@ define('composer', [
                 handle: handleEl ? handleEl.val() : undefined,
                 content: bodyEl.val(),
                 toPid: postData.toPid,
+                isanon: anonbool,
             };
         } else if (action === 'posts.edit') {
             method = 'put';
@@ -729,8 +730,13 @@ define('composer', [
                 thumb: thumbEl.val() || '',
                 tags: tags.getTags(post_uuid),
                 timestamp: scheduler.getTimestamp(),
+                isanon: anonbool,
             };
         }
+
+        console.log(route);
+        console.log(composerData.isanon);
+
         var submitHookData = {
             composerEl: postContainer,
             action: action,
