@@ -28,7 +28,7 @@ module.exports = function (Posts) {
             throw new Error('[[error:invalid-pid]]');
         }
 
-        var anonname = await user.getUserField(uid, 'username');
+        let anonname = await user.getUserField(uid, 'username');
 
         if (data.isanon) {
             anonname = 'Anonymous';
