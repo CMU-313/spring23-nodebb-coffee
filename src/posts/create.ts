@@ -23,6 +23,8 @@ export type PostObject = {
     handle?: number;
     cid?: number;
     uploads?: any;
+    anon?: string;
+    isanon?: boolean;
   };
 
 type TopicObject = {
@@ -53,12 +55,22 @@ module.exports = function (Posts:PostObject) {
         // The next line calls a function in a module that has not been updated to TS yet
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
         const pid:number = await db.incrObjectField('global', 'nextPid') as number;
+
+        // The next line calls a function in a module that has not been updated to TS yet
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+        let anonname : string = await user.getUserField(uid, 'username') as string;
+
+        if (data.isanon) {
+            anonname = 'Anonymous';
+        }
+
         let postData:PostObject = {
             pid: pid,
             uid: uid,
             tid: tid,
             content: content,
             timestamp: timestamp,
+            anon: anonname,
         };
 
         if (data.toPid) {
