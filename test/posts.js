@@ -1227,11 +1227,10 @@ describe('Post\'s', () => {
                 assert.strictEqual(events.length, 0);
             });
         });
-    
+
         describe('anonymization tests', () => {
             it('should generate unanonymous posts normally', async () => {
                 const postResult = await topics.post({ uid: globalModUid, cid: cid, title: 'topic title', content: '123456789', isanon: false });
-                //console.log(postResult);
                 // post result should not change anonymity
                 assert.equal(postResult.topicData.mainPost.isanon, false);
 
@@ -1244,7 +1243,7 @@ describe('Post\'s', () => {
                 // save actual user posting info in database, just in case
                 assert.equal(postResult.topicData.mainPost.isanon, true);
 
-                assert.equal(postResult.topicData.mainPost.anon, "Anonymous");
+                assert.equal(postResult.topicData.mainPost.anon, 'Anonymous');
             });
 
             it('should generate anonymous replies to anonymous post', async () => {
@@ -1253,9 +1252,8 @@ describe('Post\'s', () => {
                 const postResult = await topics.post({ uid: oldUid, cid: cid, title: 'anon post', content: 'original post', isanon: true });
                 const postData = await topics.reply({ uid: newUid, tid: postResult.topicData.tid, content: 'firstReply (anon)', isanon: true });
 
-                //console.log(postData);
                 assert.equal(postData.isanon, true);
-                assert.equal(postData.anon, "Anonymous");
+                assert.equal(postData.anon, 'Anonymous');
             });
 
             it('should generate normal replies to anonymous post', async () => {
@@ -1264,9 +1262,8 @@ describe('Post\'s', () => {
                 const postResult = await topics.post({ uid: oldUid, cid: cid, title: 'anon post', content: 'original post', isanon: true });
                 const postData = await topics.reply({ uid: newUid, tid: postResult.topicData.tid, content: 'firstReply (not anon)', isanon: false });
 
-                //console.log(postData);
                 assert.equal(postData.isanon, false);
-                assert.equal(postData.anon, "newuser 2");
+                assert.equal(postData.anon, 'newuser 2');
             });
         });
     });

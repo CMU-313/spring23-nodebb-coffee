@@ -22,6 +22,8 @@ export type PostObject = {
     ip?: number;
     handle?: number;
     cid?: number;
+    // The next parameter refers to data which cannot be assigned a type (not )
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     uploads?: any;
     isanon?: boolean;
     anon?: string;
@@ -53,9 +55,11 @@ module.exports = function (Posts:PostObject) {
             throw new Error('[[error:invalid-pid]]');
         }
 
+        // The next line calls a function in a module that has not been updated to TS yet
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
         let anonname: string = await user.getUserField(uid, 'username');
         if (data.isanon) {
-            anonname = "Anonymous";
+            anonname = 'Anonymous';
         }
 
         // The next line calls a function in a module that has not been updated to TS yet

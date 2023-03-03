@@ -33,9 +33,11 @@ module.exports = function (Posts) {
             if (data.toPid && !utils.isNumber(data.toPid)) {
                 throw new Error('[[error:invalid-pid]]');
             }
+            // The next line calls a function in a module that has not been updated to TS yet
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
             let anonname = yield user.getUserField(uid, 'username');
             if (data.isanon) {
-                anonname = "Anonymous";
+                anonname = 'Anonymous';
             }
             // The next line calls a function in a module that has not been updated to TS yet
             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
