@@ -41,7 +41,7 @@ type Result = {
 module.exports = function (Posts:PostObject) {
     Posts.create = async function (data:PostObject) {
         // This is an internal method, consider using Topics.reply instead
-        const { uid } = data;
+        const { uid }: {uid: string} = data;
         const { tid } = data;
         const content = data.content.toString();
         const timestamp = data.timestamp || Date.now();
