@@ -33,10 +33,11 @@ module.exports = function (Posts) {
             if (data.toPid && !utils.isNumber(data.toPid)) {
                 throw new Error('[[error:invalid-pid]]');
             }
-            const userData = yield user.getUsersFields([uid], ['username']);
-            let anonName = userData[0].username;
+            // The next line calls a function in a module that has not been updated to TS yet
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
+            let anonname = yield user.getUserField(uid, 'username');
             if (data.isanon) {
-                anonName = 'Anonymous';
+                anonname = 'Anonymous';
             }
             // The next line calls a function in a module that has not been updated to TS yet
             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
@@ -48,7 +49,7 @@ module.exports = function (Posts) {
                 content: content,
                 timestamp: timestamp,
                 isanon: data.isanon,
-                anon: anonName,
+                anon: anonname,
             };
             if (data.toPid) {
                 postData.toPid = data.toPid;
