@@ -35,6 +35,7 @@ connection.connect = async function (options) {
                 port: options.port,
                 password: options.password,
                 db: options.database,
+                family: 6,
             });
         }
 
