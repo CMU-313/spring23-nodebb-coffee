@@ -1,5 +1,4 @@
 "use strict";
-// 'use strict';
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -10,107 +9,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// import _ from 'lodash';
-// import meta from '../meta';
-// import db from '../database';
-// import plugins from '../plugins';
-// import user from '../user';
-// import topics from '../topics';
-// import categories from '../categories';
-// import groups from '../groups';
-// import utils from '../utils';
-// interface PostData {
-//     pid: number;
-//     uid: number;
-//     tid: number;
-//     content: string;
-//     timestamp: number;
-//     isMain?: boolean;
-//     toPid?: number;
-//     ip?: string;
-//     handle?: string;
-//     cid?: number;
-// }
-// export default function (Posts: any): void {
-//     Posts.create = async function (data: PostData): Promise<PostData> {
-//         const { uid } = data;
-//         const { tid } = data;
-//         const content = data.content.toString();
-//         const timestamp = data.timestamp || Date.now();
-//         const isMain = data.isMain || false;
-//         if (!uid && parseInt(uid.toString(), 10) !== 0) {
-//             throw new Error('[[error:invalid-uid]]');
-//         }
-//         if (data.toPid && !utils.isNumber(data.toPid)) {
-//             throw new Error('[[error:invalid-pid]]');
-//         }
-//         const pid = await db.incrObjectField('global', 'nextPid');
-//         let postData: PostData = {
-//             pid: pid,
-//             uid: uid,
-//             tid: tid,
-//             content: content,
-//             timestamp: timestamp,
-//         };
-//         if (data.toPid) {
-//             postData.toPid = data.toPid;
-//         }
-//         if (data.ip && meta.config.trackIpPerPost) {
-//             postData.ip = data.ip;
-//         }
-//         if (data.handle && !parseInt(uid.toString(), 10)) {
-//             postData.handle = data.handle;
-//         }
-//         let result = await plugins.hooks.fire('filter:post.create', { post: postData, data: data });
-//         postData = result.post;
-//         // The next line calls a function in a module that has not been updated to TS yet
-//         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-//         await db.setObject(`post:${postData.pid}`, postData);
-//         const topicData = await topics.getTopicFields(tid, ['cid', 'pinned']);
-//         postData.cid = topicData.cid;
-//         await Promise.all([
-//             // The next line calls a function in a module that has not been updated to TS yet
-//             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-//             db.sortedSetAdd('posts:pid', timestamp, postData.pid),
-//             // The next line calls a function in a module that has not been updated to TS yet
-//             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-//             db.incrObjectField('global', 'postCount'),
-//             // The next line calls a function in a module that has not been updated to TS yet
-//             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-//             user.onNewPostMade(postData),
-//             // The next line calls a function in a module that has not been updated to TS yet
-//             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-//             topics.onNewPostMade(postData),
-//             // The next line calls a function in a module that has not been updated to TS yet
-//             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-//             categories.onNewPostMade(topicData.cid, topicData.pinned, postData),
-//             // The next line calls a function in a module that has not been updated to TS yet
-//             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-//             groups.onNewPostMade(postData),
-//             addReplyTo(postData, timestamp),
-//             Posts.uploads.sync(postData.pid),
-//         ]);
-//         result = await plugins.hooks.fire('filter:post.get', { post: postData, uid: data.uid });
-//         result.post.isMain = isMain;
-//         // The next line calls a function in a module that has not been updated to TS yet
-//         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-//         plugins.hooks.fire('action:post.save', { post: _.clone(result.post) });
-//         return result.post;
-//     };
-//     async function addReplyTo(postData: PostData, timestamp: number): Promise<void> {
-//         if (!postData.toPid) {
-//             return;
-//         }
-//         await Promise.all([
-//             // The next line calls a function in a module that has not been updated to TS yet
-//             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-//             db.sortedSetAdd(`pid:${postData.toPid}:replies`, timestamp, postData.pid),
-//             // The next line calls a function in a module that has not been updated to TS yet
-//             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-//             db.incrObjectField(`post:${postData.toPid}`, 'replies'),
-//         ]);
-//     }
-// }
 const _ = require("lodash");
 const meta = require("../meta");
 const db = require("../database");
