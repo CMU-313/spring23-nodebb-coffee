@@ -1,0 +1,6 @@
+hset "user:1" uploadedpicture ""
+hset "user:2" uploadedpicture ""
+hset "user:3" uploadedpicture ""
+hset "user:1" picture ""
+hset "user:2" picture ""
+hset "user:3" picture ""
