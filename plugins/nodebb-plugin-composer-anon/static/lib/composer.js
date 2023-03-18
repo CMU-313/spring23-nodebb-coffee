@@ -1,5 +1,7 @@
 'use strict';
 
+// const Iroh = require('iroh');
+
 define('composer', [
     'taskbar',
     'translator',
@@ -344,7 +346,7 @@ define('composer', [
             e.preventDefault();
             e.stopPropagation();
             if ($('#post_as_anon').is(':checked')) {
-                console.log('The checkbox is checked');
+                console.log('The #1 is checked');
             }
             $(this).attr('disabled', true);
             post(post_uuid);
@@ -684,7 +686,7 @@ define('composer', [
         var anonbool = false;
 
         if ($('#post_as_anon').is(':checked')) {
-            console.log('The checkbox is checked');
+            console.log('The #2 is checked');
             anonbool = true;
         }
 

@@ -1,5 +1,6 @@
 
 import _ = require('lodash');
+import iroh = require('iroh');
 
 import meta = require('../meta');
 import db = require('../database');
@@ -38,6 +39,26 @@ type Result = {
 
 module.exports = function (Posts:PostObject) {
     Posts.create = async function (data:PostObject) {
+        console.log('this is a test');
+        const stage = iroh.Stage(`
+        function factorial(n) {
+            if (n === 0) return 1;
+            return n * factorial(n - 1);
+        };
+        `);
+        stage.addListener(iroh.CALL)
+            .on('before', (e) => {
+                const external:string = e.external ? '#external' : '';
+                console.log(' '.repeat(e.indent) + 'call', e.name, external, '(', e.arguments, ')');
+                // console.log(e.getSource());
+            })
+            .on('after', (e) => {
+                const external:string = e.external ? '#external' : '';
+                console.log(' '.repeat(e.indent) + 'call', e.name, 'end', external, '->', [e.return]);
+                // console.log(e.getSource());
+            });
+        eval(stage.script);
+
         // This is an internal method, consider using Topics.reply instead
         const { uid } = data;
         const { tid } = data;
