@@ -1,0 +1,12 @@
+{
+    "url": "http://nodebb-coffee.fly.dev",
+    "secret": "7441db01-c8f3-4b90-89bb-638c815f00e2",
+    "database": "redis",
+    "port": "4567",
+    "redis": {
+        "host": "fly-nodebb-coffee-redis.upstash.io",
+        "port": "6379",
+        "password": "a0b351e46fcc4aac9088c0e7db554e56",
+        "database": "0"
+    }
+}
