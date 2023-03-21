@@ -13,8 +13,9 @@ COPY --chown=node:node install/config_template.json /usr/src/app/config.json
 USER node
 
 RUN npm install --only=prod && \
-    npm run postinstall && \
-    npm cache clean --force
+    # npm run postinstall && \
+    npm cache clean --force && \
+    npm link nodebb-plugin-composer-anon 
 
 COPY --chown=node:node . /usr/src/app
 
