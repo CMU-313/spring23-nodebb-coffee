@@ -81,7 +81,7 @@ describe('Package install lib', () => {
             pkgInstall.updatePackageFile();
             const updated = JSON.parse(await fs.readFile(packageFilePath, 'utf8'));
             assert.deepStrictEqual(updated, source);
-            assert.strictEqual(updated.scripts.postinstall, 'patch-package";');
+            assert.strictEqual(updated.scripts.postinstall, 'patch-package');
             assert.strictEqual(updated.scripts.preinstall, 'echo "What are you?";');
         });
 
