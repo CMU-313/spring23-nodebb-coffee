@@ -72,11 +72,11 @@ describe('Package install lib', () => {
         });
 
         it('should deep merge nested objects', async () => {
-            current.scripts.postinstall = 'echo "I am a silly bean";';
+            current.scripts.postinstall = 'patch-package';
             await fs.writeFile(packageFilePath, JSON.stringify(current, null, 4));
             source.scripts.preinstall = 'echo "What are you?";';
             await fs.writeFile(sourcePackagePath, JSON.stringify(source, null, 4));
-            source.scripts.postinstall = 'echo "I am a silly bean";';
+            source.scripts.postinstall = 'patch-package';
 
             pkgInstall.updatePackageFile();
             const updated = JSON.parse(await fs.readFile(packageFilePath, 'utf8'));
