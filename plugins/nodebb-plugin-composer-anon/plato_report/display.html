@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - JavaScript Introspection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <script>
+    var __options = {"title":"Preliminary Code Report","flags":{"complexity":{"commonjs":true,"logicalor":true,"switchcase":true,"forin":false,"trycatch":false,"newmi":true},"jshint":{"globals":{},"options":{"maxerr":50,"bitwise":true,"camelcase":false,"curly":true,"eqeqeq":true,"forin":true,"immed":false,"indent":4,"latedef":false,"newcap":false,"noarg":true,"noempty":true,"nonew":false,"plusplus":false,"quotmark":false,"undef":true,"unused":true,"strict":true,"trailing":false,"maxparams":false,"maxdepth":false,"maxstatements":false,"maxcomplexity":false,"maxlen":false,"asi":false,"boss":false,"debug":false,"eqnull":false,"es5":false,"esnext":false,"moz":false,"evil":false,"expr":false,"funcscope":false,"globalstrict":false,"iterator":false,"lastsemic":false,"laxbreak":false,"laxcomma":false,"loopfunc":false,"multistr":false,"proto":false,"scripturl":false,"smarttabs":false,"shadow":false,"sub":false,"supernew":false,"validthis":false,"browser":true,"couch":false,"devel":true,"dojo":false,"jquery":true,"mootools":false,"node":true,"nonstandard":false,"prototypejs":false,"rhino":false,"worker":false,"wsh":false,"yui":false,"nomen":false,"onevar":false,"passfail":false,"white":false}}}}
+  </script>
+
+  <link href="assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="assets/css/plato.css" rel="stylesheet">
+  <link href="assets/css/plato-display.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Preliminary Code Report</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="reportBlock lineCount">
+                <div class="reportContent">
+                    <small class="chart-label">Total / Average Lines</small>
+                    <h1>3132 / 156</h1>
+                </div>
+                <div id="chart_historical_sloc" class="chart js-chart"></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="reportBlock maintainability">
+                <div class="reportContent">
+                    <small class="chart-label">Average Maintainability</small>
+                    <h1>65.19</h1>
+                </div>
+                <div id="chart_historical_maint" class="chart js-chart"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="reportBlock maintainabilityList">
+                <h2 class="reportTitle">Worst Maintainability Scores</h2>
+                <ul class="list-unstyled">
+
+                    <li>
+                        <strong>12 score</strong>
+                        <small>plato_report/files/library_js/report.js</small>
+                    </li>
+
+                    <li>
+                        <strong>39 score</strong>
+                        <small>plato_report/files/controllers_js/report.js</small>
+                    </li>
+
+                    <li>
+                        <strong>60 score</strong>
+                        <small>library.js</small>
+                    </li>
+
+                    <li>
+                        <strong>61 score</strong>
+                        <small>static/lib/composer.js</small>
+                    </li>
+
+                    <li>
+                        <strong>62 score</strong>
+                        <small>static/lib/composer/controls.js</small>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="reportBlock locList">
+                <h2 class="reportTitle">Largest Files</h2>
+                <ul class="list-unstyled">
+
+                    <li>
+                        <strong>883 lines</strong>
+                        <small>static/lib/composer.js</small>
+                    </li>
+
+                    <li>
+                        <strong>330 lines</strong>
+                        <small>library.js</small>
+                    </li>
+
+                    <li>
+                        <strong>309 lines</strong>
+                        <small>static/lib/composer/drafts.js</small>
+                    </li>
+
+                    <li>
+                        <strong>265 lines</strong>
+                        <small>static/lib/composer/uploads.js</small>
+                    </li>
+
+                    <li>
+                        <strong>225 lines</strong>
+                        <small>static/lib/composer/tags.js</small>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="reportBlock lintList">
+                <h2 class="reportTitle">Lint Warnings</h2>
+                <ul class="list-unstyled">
+
+                    <li>
+                        <strong>51 lint errors</strong>
+                        <small>library.js</small>
+                   </li>
+
+                    <li>
+                        <strong>45 lint errors</strong>
+                        <small>websockets.js</small>
+                   </li>
+
+                    <li>
+                        <strong>32 lint errors</strong>
+                        <small>static/lib/composer/drafts.js</small>
+                   </li>
+
+                    <li>
+                        <strong>31 lint errors</strong>
+                        <small>static/lib/composer.js</small>
+                   </li>
+
+                    <li>
+                        <strong>28 lint errors</strong>
+                        <small>static/lib/composer/scheduler.js</small>
+                   </li>
+
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<script type="text/javascript" src="assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="assets/scripts/plato-display.js"></script>
+
+</body>
+</html>
