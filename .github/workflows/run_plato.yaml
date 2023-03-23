@@ -1,0 +1,16 @@
+name: run-plato-analysis
+run-name: ${{ github.actor }} is running Plato
+on: 
+  pull_request:
+    branches: main
+jobs:
+  run_plato:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: npm install -g plato
+      - run: cd ./plugins/nodebb-plugin-composer-anon/
+      - run: plato -r --dir ./plato_report -l .jshintrc -e static/lib/.eslintrc -t "Preliminary Code Report" -x .json ./
