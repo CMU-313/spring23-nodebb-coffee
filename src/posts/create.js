@@ -10,7 +10,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const _ = require("lodash");
-const iroh = require("iroh");
 const meta = require("../meta");
 const db = require("../database");
 const plugins = require("../plugins");
@@ -23,24 +22,24 @@ module.exports = function (Posts) {
     Posts.create = function (data) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log('this is a test');
-            const stage = iroh.Stage(`
-        function factorial(n) {
-            if (n === 0) return 1;
-            return n * factorial(n - 1);
-        };
-        `);
+            /* const stage = iroh.Stage(`
+            function factorial(n) {
+                if (n === 0) return 1;
+                return n * factorial(n - 1);
+            };
+            `);
             stage.addListener(iroh.CALL)
                 .on('before', (e) => {
-                const external = e.external ? '#external' : '';
-                console.log(' '.repeat(e.indent) + 'call', e.name, external, '(', e.arguments, ')');
-                // console.log(e.getSource());
-            })
+                    const external:string = e.external ? '#external' : '';
+                    console.log(' '.repeat(e.indent) + 'call', e.name, external, '(', e.arguments, ')');
+                    // console.log(e.getSource());
+                })
                 .on('after', (e) => {
-                const external = e.external ? '#external' : '';
-                console.log(' '.repeat(e.indent) + 'call', e.name, 'end', external, '->', [e.return]);
-                // console.log(e.getSource());
-            });
-            eval(stage.script);
+                    const external:string = e.external ? '#external' : '';
+                    console.log(' '.repeat(e.indent) + 'call', e.name, 'end', external, '->', [e.return]);
+                    // console.log(e.getSource());
+                });
+            eval(stage.script); */
             // This is an internal method, consider using Topics.reply instead
             const { uid } = data;
             const { tid } = data;
