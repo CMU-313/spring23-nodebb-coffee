@@ -34,20 +34,27 @@ module.exports = function (Posts) {
                 throw new Error('[[error:invalid-pid]]');
             }
             // The next line calls a function in a module that has not been updated to TS yet
+
             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
             const pid = yield db.incrObjectField('global', 'nextPid');
             // The next line calls a function in a module that has not been updated to TS yet
             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+
             let anonname = yield user.getUserField(uid, 'username');
             if (data.isanon) {
                 anonname = 'Anonymous';
             }
+
+            // The next line calls a function in a module that has not been updated to TS yet
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+            const pid = yield db.incrObjectField('global', 'nextPid');
             let postData = {
                 pid: pid,
                 uid: uid,
                 tid: tid,
                 content: content,
                 timestamp: timestamp,
+                isanon: data.isanon,
                 anon: anonname,
             };
             if (data.toPid) {

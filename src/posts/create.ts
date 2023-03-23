@@ -22,9 +22,11 @@ export type PostObject = {
     ip?: number;
     handle?: number;
     cid?: number;
+    // The next parameter refers to data which cannot be assigned a type (not )
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     uploads?: any;
-    anon?: string;
     isanon?: boolean;
+    anon?: string;
   };
 
 type TopicObject = {
@@ -39,7 +41,7 @@ type Result = {
 module.exports = function (Posts:PostObject) {
     Posts.create = async function (data:PostObject) {
         // This is an internal method, consider using Topics.reply instead
-        const { uid } = data;
+        const { uid }: {uid: string} = data;
         const { tid } = data;
         const content = data.content.toString();
         const timestamp = data.timestamp || Date.now();
@@ -52,6 +54,14 @@ module.exports = function (Posts:PostObject) {
         if (data.toPid && !utils.isNumber(data.toPid)) {
             throw new Error('[[error:invalid-pid]]');
         }
+
+        // The next line calls a function in a module that has not been updated to TS yet
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
+        let anonname: string = await user.getUserField(uid, 'username');
+        if (data.isanon) {
+            anonname = 'Anonymous';
+        }
+
         // The next line calls a function in a module that has not been updated to TS yet
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
         const pid:number = await db.incrObjectField('global', 'nextPid') as number;
@@ -70,6 +80,7 @@ module.exports = function (Posts:PostObject) {
             tid: tid,
             content: content,
             timestamp: timestamp,
+            isanon: data.isanon,
             anon: anonname,
         };
 
