@@ -12,6 +12,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
-      - run: npm install -g plato
+      - run: npm install plato
       - run: npm install json-easy-strip
       - run: node run_plato.js
