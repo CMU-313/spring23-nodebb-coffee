@@ -5,21 +5,13 @@ on:
     branches: main
   push:
 jobs:
-  get_dependencies:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-      - run: npm install -g plato
-      - run: npm install json-easy-strip
   run_plato:
     runs-on: ubuntu-latest
-    needs: get_dependencies
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: '16'
+      - run: npm install -g plato
+      - run: npm install json-easy-strip
       - run: node run_plato.js

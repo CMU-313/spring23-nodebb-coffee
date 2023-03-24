@@ -1,5 +1,5 @@
-var plato = require('plato');
 const requireJSON = require('json-easy-strip');
+const plato = require('plato');
 
 let src = ['plugins/nodebb-plugin-composer-anon/*.js', 'plugins/nodebb-plugin-composer-anon/static/lib/*.js', 'plugins/nodebb-plugin-composer-anon/static/lib/composer/*.js'];
 
