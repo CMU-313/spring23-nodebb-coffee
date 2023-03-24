@@ -1,9 +1,8 @@
 name: run-plato-analysis
 run-name: ${{ github.actor }} is running Plato
-on: 
+on:
   pull_request:
     branches: main
-  push:
 jobs:
   run_plato:
     runs-on: ubuntu-latest
