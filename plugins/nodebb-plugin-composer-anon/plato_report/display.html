@@ -12,7 +12,7 @@
   <![endif]-->
 
   <script>
-    var __options = {"title":"Preliminary Code Report","flags":{"complexity":{"commonjs":true,"logicalor":true,"switchcase":true,"forin":false,"trycatch":false,"newmi":true},"jshint":{"globals":{},"options":{"maxerr":50,"bitwise":true,"camelcase":false,"curly":true,"eqeqeq":true,"forin":true,"immed":false,"indent":4,"latedef":false,"newcap":false,"noarg":true,"noempty":true,"nonew":false,"plusplus":false,"quotmark":false,"undef":true,"unused":true,"strict":true,"trailing":false,"maxparams":false,"maxdepth":false,"maxstatements":false,"maxcomplexity":false,"maxlen":false,"asi":false,"boss":false,"debug":false,"eqnull":false,"es5":false,"esnext":false,"moz":false,"evil":false,"expr":false,"funcscope":false,"globalstrict":false,"iterator":false,"lastsemic":false,"laxbreak":false,"laxcomma":false,"loopfunc":false,"multistr":false,"proto":false,"scripturl":false,"smarttabs":false,"shadow":false,"sub":false,"supernew":false,"validthis":false,"browser":true,"couch":false,"devel":true,"dojo":false,"jquery":true,"mootools":false,"node":true,"nonstandard":false,"prototypejs":false,"rhino":false,"worker":false,"wsh":false,"yui":false,"nomen":false,"onevar":false,"passfail":false,"white":false}}}}
+    var __options = {"title":"Plugin Code Report","flags":{"complexity":{"commonjs":true,"logicalor":true,"switchcase":true,"forin":false,"trycatch":false,"newmi":true},"jshint":{"extends":"nodebb/public","rules":{"no-cond-assign":["error","except-parens"]},"globals":{}}}}
   </script>
 
   <link href="assets/css/vendor/bootstrap.css" rel="stylesheet">
@@ -25,13 +25,13 @@
 <body>
 
 <div class="container">
-    <h1>Preliminary Code Report</h1>
+    <h1>Plugin Code Report</h1>
     <div class="row">
         <div class="col-md-6">
             <div class="reportBlock lineCount">
                 <div class="reportContent">
                     <small class="chart-label">Total / Average Lines</small>
-                    <h1>3132 / 156</h1>
+                    <h1>3128 / 195</h1>
                 </div>
                 <div id="chart_historical_sloc" class="chart js-chart"></div>
             </div>
@@ -40,7 +40,7 @@
             <div class="reportBlock maintainability">
                 <div class="reportContent">
                     <small class="chart-label">Average Maintainability</small>
-                    <h1>65.19</h1>
+                    <h1>69.80</h1>
                 </div>
                 <div id="chart_historical_maint" class="chart js-chart"></div>
             </div>
@@ -52,16 +52,6 @@
             <div class="reportBlock maintainabilityList">
                 <h2 class="reportTitle">Worst Maintainability Scores</h2>
                 <ul class="list-unstyled">
-
-                    <li>
-                        <strong>12 score</strong>
-                        <small>plato_report/files/library_js/report.js</small>
-                    </li>
-
-                    <li>
-                        <strong>39 score</strong>
-                        <small>plato_report/files/controllers_js/report.js</small>
-                    </li>
 
                     <li>
                         <strong>60 score</strong>
@@ -76,6 +66,16 @@
                     <li>
                         <strong>62 score</strong>
                         <small>static/lib/composer/controls.js</small>
+                    </li>
+
+                    <li>
+                        <strong>66 score</strong>
+                        <small>static/lib/composer/resize.js</small>
+                    </li>
+
+                    <li>
+                        <strong>66 score</strong>
+                        <small>static/lib/composer/uploads.js</small>
                     </li>
 
                 </ul>
@@ -121,28 +121,28 @@
                 <ul class="list-unstyled">
 
                     <li>
-                        <strong>51 lint errors</strong>
+                        <strong>1 lint errors</strong>
+                        <small>controllers.js</small>
+                   </li>
+
+                    <li>
+                        <strong>1 lint errors</strong>
                         <small>library.js</small>
                    </li>
 
                     <li>
-                        <strong>45 lint errors</strong>
+                        <strong>1 lint errors</strong>
                         <small>websockets.js</small>
                    </li>
 
                     <li>
-                        <strong>32 lint errors</strong>
-                        <small>static/lib/composer/drafts.js</small>
-                   </li>
-
-                    <li>
-                        <strong>31 lint errors</strong>
+                        <strong>1 lint errors</strong>
                         <small>static/lib/composer.js</small>
                    </li>
 
                     <li>
-                        <strong>28 lint errors</strong>
-                        <small>static/lib/composer/scheduler.js</small>
+                        <strong>1 lint errors</strong>
+                        <small>static/lib/composer/autocomplete.js</small>
                    </li>
 
                 </ul>

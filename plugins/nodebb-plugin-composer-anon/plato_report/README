@@ -1,5 +1,0 @@
-Using plato (https://github.com/es-analysis/plato)
-
-Command used with plato:
-
-plato -r --dir ./plato_report -l .jshintrc -e static/lib/.eslintrc -t "Preliminary Code Report" -x .json ./

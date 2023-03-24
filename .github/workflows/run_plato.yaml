@@ -13,5 +13,5 @@ jobs:
         with:
           node-version: '14'
       - run: npm install -g plato
-      - run: pwd
-      - run: plato -r --dir ./plugins/nodebb-plugin-composer-anon/plato_report -l ./plugins/nodebb-plugin-composer-anon/.jshintrc -e ./plugins/nodebb-plugin-composer-anon/static/lib/.eslintrc -t "Preliminary Code Report" -x .json ./
+      - run: npm install json-easy-strip
+      - run: node run_plato.js
