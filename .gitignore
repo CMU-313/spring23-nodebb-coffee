@@ -82,3 +82,6 @@ theme/*.sublime-workspace
 theme/.idea
 theme/.vscode
 theme/node_modules/
+
+# Plato-related output
+plugins/nodebb-plugin-composer-anon/plato_report/*

@@ -30,3 +30,4 @@ test/files
 themes/
 
 plugins/nodebb-plugin-composer-anon/plato_report/*
+run_plato.js
