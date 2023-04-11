@@ -48,13 +48,14 @@ def predict(student):
     
     student = student.dict(by_alias=True)
     query = pd.DataFrame(student, index=[0])
-    prediction = clf.predict(query) # TODO: Error handling ??
-
-    print(prediction[0])
-    sys.stdout.flush()
+    try:
+        prediction = clf.predict(query)
+    except Exception:
+        print("Prediction failed")
+        return
 
     return { 'good_employee': prediction[0] }
 
 if __name__ == '__main__':
     assert len(sys.argv) == 2, "Error: Incorrect args passed to predict.py"
-    predict(json.loads(sys.argv[1]))
+    print(predict(json.loads(sys.argv[1])))
