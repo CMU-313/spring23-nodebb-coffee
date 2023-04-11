@@ -85,3 +85,6 @@ theme/node_modules/
 
 # Plato-related output
 plugins/nodebb-plugin-composer-anon/plato_report/*
+
+# Career Model: Python Ignores
+__pycache__
