@@ -7,6 +7,27 @@ const https = require('https');
 
 const Career = module.exports;
 
+// gets ML evaluation of student data via API call to URL
+function getEval(URL) {
+    return new Promise((resolve, reject) => {
+        // sourced from https://www.educative.io/answers/what-is-the-httpsget-method-in-node
+        https.get(URL, (res) => {
+            let data = '';
+
+            res.on('data', (chunk) => {
+                data += chunk;
+            });
+
+            res.on('end', () => {
+                console.log(data);
+                resolve(data);
+            });
+        }).on('error', (error) => {
+            reject(error);
+        });
+    });
+}
+
 Career.register = async (req, res) => {
     const userData = req.body;
     try {
@@ -23,27 +44,14 @@ Career.register = async (req, res) => {
 
         const URL = "https://career-model-coffee.fly.dev/ask?studentData=" + encodeURI(JSON.stringify(userCareerData));
 
-        // sourced from https://www.educative.io/answers/what-is-the-httpsget-method-in-node
-        https.get(URL, (res) => {
-            let data = '';
-
-            res.on('data', (chunk) => {
-                data += chunk;
-            });
-
-            res.on('end', () => {
-                console.log(data);
-                console.log("Finished!");
-            });
-        }).on("error", (err) => {
-            console.log("Error: " + err.message);
-        });
-
-        var prediction = Math.round(Math.random()); // TODO: Change this line to do call and retrieve actual candidate success prediction from the model instead of using a random number
+        var result = await getEval(URL);
+        var prediction = parseInt(JSON.parse(result).good_employee);
+        console.log(prediction);
+        
         if (prediction == 1) {
             userCareerData.prediction = "Good worker";
         } else {
-            userCareerData.prediction - "Bad worker";
+            userCareerData.prediction = "Bad worker";
         }
         
         await user.setCareerData(req.uid, userCareerData);
