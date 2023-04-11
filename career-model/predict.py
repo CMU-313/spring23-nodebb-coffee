@@ -2,6 +2,8 @@ import pandas as pd
 import joblib
 from pydantic import BaseModel, Field
 from pydantic.tools import parse_obj_as
+import sys
+import json
 
 # Pydantic Models
 class Student(BaseModel):
@@ -42,10 +44,17 @@ def predict(student):
     # Use Pydantic to validate model fields exist
     student = parse_obj_as(Student, student)
 
-    clf = joblib.load('./model.pkl')
+    clf = joblib.load('./career-model/model.pkl')
     
     student = student.dict(by_alias=True)
     query = pd.DataFrame(student, index=[0])
     prediction = clf.predict(query) # TODO: Error handling ??
 
+    print(prediction[0])
+    sys.stdout.flush()
+
     return { 'good_employee': prediction[0] }
+
+if __name__ == '__main__':
+    assert len(sys.argv) == 2, "Error: Incorrect args passed to predict.py"
+    predict(json.loads(sys.argv[1]))
