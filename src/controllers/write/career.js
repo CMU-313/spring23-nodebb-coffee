@@ -1,9 +1,9 @@
 'use strict';
 
+const https = require('https');
 const helpers = require('../helpers');
 const user = require('../../user');
 const db = require('../../database');
-const https = require('https');
 
 const Career = module.exports;
 
@@ -42,18 +42,18 @@ Career.register = async (req, res) => {
             num_past_internships: userData.num_past_internships,
         };
 
-        const URL = "https://career-model-coffee.fly.dev/ask?studentData=" + encodeURI(JSON.stringify(userCareerData));
+        const URL = `https://career-model-coffee.fly.dev/ask?studentData=${encodeURI(JSON.stringify(userCareerData))}`;
 
-        var result = await getEval(URL);
-        var prediction = parseInt(JSON.parse(result).good_employee);
+        const result = await getEval(URL);
+        const prediction = parseInt(JSON.parse(result).good_employee, 10);
         console.log(prediction);
-        
-        if (prediction == 1) {
-            userCareerData.prediction = "Good worker";
+
+        if (prediction === 1) {
+            userCareerData.prediction = 'Good worker';
         } else {
-            userCareerData.prediction = "Bad worker";
+            userCareerData.prediction = 'Bad worker';
         }
-        
+
         await user.setCareerData(req.uid, userCareerData);
         db.sortedSetAdd('users:career', req.uid, req.uid);
         res.json({});
