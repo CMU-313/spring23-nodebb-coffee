@@ -3,6 +3,7 @@
 const helpers = require('../helpers');
 const user = require('../../user');
 const db = require('../../database');
+const https = require('https');
 
 const Career = module.exports;
 
@@ -20,11 +21,29 @@ Career.register = async (req, res) => {
             num_past_internships: userData.num_past_internships,
         };
 
+        const URL = "https://career-model-coffee.fly.dev/ask?studentData=" + encodeURI(JSON.stringify(userCareerData));
+
+        // sourced from https://www.educative.io/answers/what-is-the-httpsget-method-in-node
+        https.get(URL, (res) => {
+            let data = '';
+
+            res.on('data', (chunk) => {
+                data += chunk;
+            });
+
+            res.on('end', () => {
+                console.log(data);
+                console.log("Finished!");
+            });
+        }).on("error", (err) => {
+            console.log("Error: " + err.message);
+        });
+
         var prediction = Math.round(Math.random()); // TODO: Change this line to do call and retrieve actual candidate success prediction from the model instead of using a random number
         if (prediction == 1) {
-            userCareerData.prediction = "Good applicant";
+            userCareerData.prediction = "Good worker";
         } else {
-            userCareerData.prediction - "Bad applicant";
+            userCareerData.prediction - "Bad worker";
         }
         
         await user.setCareerData(req.uid, userCareerData);

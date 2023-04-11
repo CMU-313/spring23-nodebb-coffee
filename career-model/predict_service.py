@@ -5,9 +5,11 @@ import predict
 app = Flask(__name__)
 
 @app.route('/')
+@app.route('/ask')
 def make_prediction():
     # fetch student data
     student = request.args.get('studentData')
-    print(json.loads(student))
-    return predict.predict(student)['good_employee']
+    return predict.predict(json.loads(student))
 
+if __name__ == '__main__':
+    app.run()

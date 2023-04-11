@@ -44,7 +44,7 @@ def predict(student):
     # Use Pydantic to validate model fields exist
     student = parse_obj_as(Student, student)
 
-    clf = joblib.load('./career-model/model.pkl')
+    clf = joblib.load('./model.pkl')
     
     student = student.dict(by_alias=True)
     query = pd.DataFrame(student, index=[0])
@@ -52,9 +52,9 @@ def predict(student):
         prediction = clf.predict(query)
     except Exception:
         print("Prediction failed")
-        return
+        return student
 
-    return { 'good_employee': prediction[0] }
+    return { 'good_employee': prediction[0].item() }
 
 if __name__ == '__main__':
     assert len(sys.argv) == 2, "Error: Incorrect args passed to predict.py"
