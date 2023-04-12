@@ -1,0 +1,52 @@
+post:
+  tags:
+    - career
+  summary: create/update information about student career
+  description: This operation uses student-provided information about themselves to deduce future work performance. 
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            student_id:
+              type: number
+              example: '0'
+            gender: 
+              type: string
+              example: "M"
+            age:
+              type: number
+              enum: [18, 25]
+              example: 21
+            major:
+              type: string
+              example: 'Computer Science'
+            gpa:
+              type: number
+              enum: [0.0, 4.0]
+              example: 3.0
+            extra_curricular:
+              type: string
+              example: "Buggy"
+            num_programming_languages:
+              type: number
+              enum: [1, 5]
+              example: 3
+            num_past_internships:
+              type: number
+              enum: [0, 4]
+              example: 2
+          required:
+            - student_id
+            - major
+            - age
+            - gender
+            - gpa
+            - extra_curricular
+            - num_programming_languages
+            - num_past_internships
+  responses:
+    '200':
+      description: Post successfully created
