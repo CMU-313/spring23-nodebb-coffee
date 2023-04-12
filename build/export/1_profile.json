@@ -4,80 +4,46 @@
         "userslug": "joonbang",
         "accounttype": "student",
         "email": "joonb3@gmail.com",
-        "joindate": "1676042580432",
-        "lastonline": "1677784798602",
+        "joindate": "1681215519212",
+        "lastonline": "1681229432272",
         "status": "online",
         "uid": "1",
         "password:shaWrapped": "1",
         "email:confirmed": "1",
         "groupTitle": "[\"administrators\"]",
-        "topiccount": "12",
-        "lastposttime": "1677784854945",
-        "postcount": "25",
-        "rss_token": "55d39b90-fc7c-4d54-9714-cb5d09fe7f9d"
+        "topiccount": "1",
+        "lastposttime": "1681215519619",
+        "postcount": "1",
+        "rss_token": "e560bd2f-9c6c-4399-a6c8-ed3cd8f82fac"
     },
-    "settings": {
-        "showemail": "0",
-        "showfullname": "0",
-        "openOutgoingLinksInNewTab": "0",
-        "dailyDigestFreq": "off",
-        "usePagination": "0",
-        "topicsPerPage": "20",
-        "postsPerPage": "20",
-        "userLang": "en-US",
-        "acpLang": "en-US",
-        "followTopicsOnCreate": "1",
-        "followTopicsOnReply": "0",
-        "restrictChat": "0",
-        "updateUrlWithPostIndex": "1",
-        "homePageRoute": "",
-        "scrollToMyPost": "1",
-        "upvoteNotifFreq": "all",
-        "bootswatchSkin": "",
-        "categoryWatchState": "watching",
-        "notificationType_upvote": "notification",
-        "notificationType_new-topic": "notification",
-        "notificationType_new-reply": "notification",
-        "notificationType_post-edit": "notification",
-        "notificationType_follow": "notification",
-        "notificationType_new-chat": "notification",
-        "notificationType_new-group-chat": "notification",
-        "notificationType_group-invite": "notification",
-        "notificationType_group-leave": "notification",
-        "notificationType_group-request-membership": "notification",
-        "notificationType_mention": "notification",
-        "notificationType_new-register": "notification",
-        "notificationType_post-queue": "notification",
-        "notificationType_new-post-flag": "notification",
-        "notificationType_new-user-flag": "notification"
-    },
+    "settings": null,
     "ips": [
         "127.0.0.1"
     ],
     "sessions": [
         {
             "ip": "127.0.0.1",
-            "uuid": "7e70946f-410a-411e-a33d-f095937c56a6",
-            "datetime": 1677780937476,
+            "uuid": "25883902-3fdc-4147-8f56-3fa26ef230ba",
+            "datetime": 1681229339774,
             "platform": "Apple Mac",
             "browser": "Chrome",
-            "version": "110.0.0.0",
+            "version": "111.0.0.0",
             "current": false,
-            "datetimeISO": "2023-03-02T18:15:37.476Z"
+            "datetimeISO": "2023-04-11T16:08:59.774Z"
         }
     ],
     "usernames": [
         {
             "value": "joonbang",
-            "timestamp": 1676042580432,
-            "timestampISO": "2023-02-10T15:23:00.432Z"
+            "timestamp": 1681215519212,
+            "timestampISO": "2023-04-11T12:18:39.212Z"
         }
     ],
     "emails": [
         {
             "value": "joonb3@gmail.com",
-            "timestamp": 1676042580898,
-            "timestampISO": "2023-02-10T15:23:00.898Z"
+            "timestamp": 1681215519580,
+            "timestampISO": "2023-04-11T12:18:39.580Z"
         }
     ],
     "messages": [],
@@ -86,62 +52,7 @@
         {
             "tid": "1",
             "title": "Welcome to your NodeBB!",
-            "timestamp": "1676042580953"
-        },
-        {
-            "tid": "2",
-            "title": "Testing 123",
-            "timestamp": "1676044981607"
-        },
-        {
-            "tid": "3",
-            "title": "Hi there",
-            "timestamp": "1677780968650"
-        },
-        {
-            "tid": "4",
-            "title": "Hello",
-            "timestamp": "1677781729976"
-        },
-        {
-            "tid": "5",
-            "title": "Hi!",
-            "timestamp": "1677782334195"
-        },
-        {
-            "tid": "6",
-            "title": "testing1",
-            "timestamp": "1677782727546"
-        },
-        {
-            "tid": "7",
-            "title": "Do things!",
-            "timestamp": "1677783144211"
-        },
-        {
-            "tid": "8",
-            "title": "asdfasdf",
-            "timestamp": "1677784042500"
-        },
-        {
-            "tid": "9",
-            "title": "blargh",
-            "timestamp": "1677784129376"
-        },
-        {
-            "tid": "10",
-            "title": "another anon test",
-            "timestamp": "1677784450306"
-        },
-        {
-            "tid": "11",
-            "title": "asdfasdf",
-            "timestamp": "1677784782640"
-        },
-        {
-            "tid": "12",
-            "title": "testing!!!!",
-            "timestamp": "1677784854945"
+            "timestamp": "1681215519616"
         }
     ],
     "upvoted": [],
